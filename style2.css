@@ -1,0 +1,184 @@
+:root {
+    --primary: #dd5110;
+    --light: #ffffff;
+    --dark: #000000;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f5f5;
+  }
+
+  header {
+    background-color: var(--light);
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+  }
+
+  .promo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2em;
+    padding: 2em;
+  }
+
+  .promo-box {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 10px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .promo-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .promo-box h2 {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .promo-box h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .promo-box p {
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+  }
+
+  .promo-box button {
+    background-color: transparent;
+    border: 2px solid var(--light);
+    color: var(--light);
+    padding: 0.6em 1.5em;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .promo-box button:hover {
+    background-color: var(--light);
+    color: var(--primary);
+  }
+
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav {
+      margin-top: 1em;
+      justify-content: flex-start;
+    }
+
+    .promo-box h1 {
+      font-size: 1.5em;
+    }
+
+    .promo-box p {
+      font-size: 0.9em;
+    }
+  }
+  .promo-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1em;
+  }
+
+/* Gambar yang diblur saat promo berakhir */
+
+/* Wrapper untuk gambar dan overlay */
+.image-wrapper {
+position: relative;
+overflow: hidden;
+}
+
+/* Gambar yang diblur saat promo berakhir */
+img.expired {
+filter: blur(3px) brightness(1); /* Tambahkan blur yang lebih besar dan lebih gelap */
+transition: filter 0.5s ease-in-out; /* Transisi smooth untuk efek blur */
+}
+
+/* Overlay yang muncul ketika promo berakhir */
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: none; /* Awalnya disembunyikan */
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.7); /* Overlay yang lebih gelap untuk kontras */
+color: white;
+font-size: 1.5rem;
+font-weight: bold;
+z-index: 1;
+opacity: 0; /* Awalnya transparan */
+transition: opacity 0.3s ease-in-out, transform 0.3s ease; /* Transisi overlay lebih halus */
+transform: translateY(20px); /* Efek animasi masuk dari bawah */
+}
+
+.overlay.show {
+display: flex; /* Tampilkan overlay */
+opacity: 1; /* Buat overlay terlihat */
+transform: translateY(0); /* Menggerakkan overlay ke posisi normal */
+}
+
+/* Tombol yang dinonaktifkan */
+button:disabled {
+background-color: #aaa;
+cursor: not-allowed;
+}
+
+/* Efek hover untuk tombol */
+button {
+transition: background 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+background-color: var(--light);
+color: var(--primary);
+}
