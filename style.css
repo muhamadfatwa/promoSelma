@@ -1,0 +1,417 @@
+:root {
+    --primary: hsl(0, 73%, 43%);
+    --light: #ffffff;
+    --dark: #000000;
+  }
+
+  /*mengatur font*/
+
+  body {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  h1, h2, h3, .logo {
+    font-family: 'Poppins', sans-serif;
+  }
+  /*mengatur font*/
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* urutkan header-main-footer secara vertikal */
+  }
+  
+ /* Header container */
+header {
+background-color: var(--light);
+padding: 1em 2em;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Flex container untuk baris atas */
+.header-top {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+ 
+/* Logo di kanan */
+.logo {
+font-size: 2.5em;
+font-weight: bold;
+color: var(--primary);
+}
+nav {
+display: flex;
+justify-content: flex-start;
+gap: 1em;
+margin-top: 1em;
+}
+
+  nav a {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: var(--primary);
+  }
+
+
+  /**/
+
+  .promo-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2em;
+    padding: 2em;
+  }
+
+  .promo-box {
+    background-color: var(--primary);
+    color: var(--light);
+    padding: 10px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+
+  .promo-box:hover {
+    transform: translateY(-5px);
+  }
+
+  .promo-box h2 {
+    margin-bottom: 0.5em;
+    font-size: 1.2em;
+  }
+
+  .promo-box h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+
+  .promo-box p {
+    font-size: 0.95em;
+    margin-bottom: 1.5em;
+  }
+
+  .promo-box button {
+    background-color: transparent;
+    border: 2px solid var(--light);
+    color: var(--light);
+    padding: 0.6em 1.5em;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  .promo-box button:hover {
+    background-color: var(--light);
+    color: var(--primary);
+  }
+
+/* Hamburger di kiri */
+.hamburger {
+font-size: 2em;
+cursor: pointer;
+color: var(--primary);
+display: none; /* default: hidden, muncul di mobile */
+}
+  @media (max-width: 600px) {
+
+/* Hamburger base */
+
+.footer {
+  position: relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.hamburger {
+    display: none;
+    width: 30px;
+    height: 22px;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    z-index: 100;
+  }
+  
+  .hamburger span {
+    display: block;
+    height: 4px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: 0.4s ease;
+    margin: 3px;
+  }
+  
+  /* Hamburger animasi ke bentuk X */
+  .hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  
+  .hamburger.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+    .hamburger {
+      display: block;
+    }
+  
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    nav {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+    }
+    nav a {
+      padding: 0.75em 1em;
+      border-top: 1px solid #ddd;
+    }
+  
+    nav.show {
+      display: flex;
+    }
+    .promo-box h1 {
+      font-size: 1.5em;
+    }
+
+    .promo-box p {
+      font-size: 0.9em;
+    }
+  }
+  .promo-box img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1em;
+  }
+
+/* Gambar yang diblur saat promo berakhir */
+
+/* Wrapper untuk gambar dan overlay */
+.image-wrapper {
+position: relative;
+overflow: hidden;
+}
+
+/* Gambar yang diblur saat promo berakhir */
+img.expired {
+filter: blur(3px) brightness(1); /* Tambahkan blur yang lebih besar dan lebih gelap */
+transition: filter 0.5s ease-in-out; /* Transisi smooth untuk efek blur */
+}
+
+/* Overlay yang muncul ketika promo berakhir */
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+display: none; /* Awalnya disembunyikan */
+justify-content: center;
+align-items: center;
+background-color: rgba(0, 0, 0, 0.7); /* Overlay yang lebih gelap untuk kontras */
+color: white;
+font-size: 1.5rem;
+font-weight: bold;
+z-index: 1;
+opacity: 0; /* Awalnya transparan */
+transition: opacity 0.3s ease-in-out, transform 0.3s ease; /* Transisi overlay lebih halus */
+transform: translateY(20px); /* Efek animasi masuk dari bawah */
+}
+
+.overlay.show {
+display: flex; /* Tampilkan overlay */
+opacity: 1; /* Buat overlay terlihat */
+transform: translateY(0); /* Menggerakkan overlay ke posisi normal */
+}
+
+/* Tombol yang dinonaktifkan */
+button:disabled {
+background-color: #aaa;
+cursor: not-allowed;
+}
+
+/* Efek hover untuk tombol */
+button {
+transition: background 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+background-color: var(--light);
+color: var(--primary);
+}
+
+.welcome {
+    text-align: center;
+    margin-top: 2em;  /* Kurangi margin-top agar lebih dekat ke gambar */
+    margin-bottom: 0.5em;  /* Tambahkan margin bawah supaya lebih kompak */
+    color: var(--primary);
+    font-size: 1em;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease forwards;
+    opacity: 0;
+  }
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .entranceSelma {
+    display: inline-block;
+    position: relative;
+    overflow: visible;
+    text-align: center;
+    width: auto;
+    height: auto;
+    margin: 0 auto;  /* Pastikan margin di tengah halaman */
+    margin-top: 80px;
+  }
+  
+  .entranceSelma img.entrance-image {
+    display: block;
+    width: 100%;     /* Membuat gambar lebih besar */
+    max-width: none; /* Biarkan gambar melebihi lebar container */
+    height: auto;
+    object-fit: cover; /* Menutupi area tanpa distorsi */
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  /* Efek hover (interaktif) */
+.entranceSelma img.entrance-image:hover {
+    transform: scale(1.02); /* sedikit membesar saat hover */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  }
+/*
+  .footer {
+    background-color: var(--light);
+    padding: 1em 2em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: auto;
+  }*/
+
+  .footer {
+    background-color: var(--light);
+    padding: 1em 2em;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    color: var(--primary);
+  }
+  
+  .footer-content {
+    text-align: center;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  
+  .footer-logo {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 0.5em;
+  }
+  main {
+    flex: 1;
+  }
+.mekanisme h3 {
+  margin-left: -20px;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+/*tombol kembali*/
+.back {
+  position: static;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.back button {
+  background: linear-gradient(135deg, #ff4d4d, #ff7f50); /* gradasi warna merah ke coral */
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 50px; /* bentuk oval */
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3);
+  transition: all 0.3s ease;
+}
+
+.back button:hover {
+  transform: translateY(-3px); /* efek melayang */
+  box-shadow: 0 8px 20px rgba(255, 77, 77, 0.5);
+  background: linear-gradient(135deg, #ff7f50, #ff4d4d); /* balik gradasi saat hover */
+}
+
+.back button:active {
+  transform: scale(0.95); /* efek klik */
+}
+
+
+/* ======== FIX FOOTER SELALU TAMPIL ======== */
+
+/* Pastikan konten punya jarak bawah cukup */
+.promo-container {
+  padding-bottom: 10px; /* ruang untuk footer */
+}
+
+/* Footer posisi normal, selalu tampil */
+.footer {
+  position: relative; 
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--light);
+  padding: 1em 2em;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: var(--primary);
+  z-index: 10;
+}
+
+/* Tambahan untuk mobile */
+@media (max-width: 600px) {
+  .footer {
+    padding: 1.5em 1em;
+    font-size: 0.95rem;
+  }
+}
