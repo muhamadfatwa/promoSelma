@@ -7,14 +7,12 @@
   /*mengatur font*/
 
   body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Poppins', sans-serif;
     color: #333;
     line-height: 1.6;
   }
   
-  h1, h2, h3, .logo {
-    font-family: 'Poppins', sans-serif;
-  }
+ 
   /*mengatur font*/
 
   * {
